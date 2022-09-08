@@ -1,0 +1,787 @@
+
+<div style="text-align:center; font-size:30px; font-weight:bold;">A8 Dashboard</div>
+
+<div class="card" style="margin-top:50px" hidden>
+    <div class=" row ">
+        <p1 style="text-align:center;  font-size:40px">Machine Management</p1>
+        <div class=" col-6" id="app">
+            <div>
+                <br />
+                <p1 style="text-align:center; margin-left:30px; font-size:30px">IS Assy efficient</p1>
+                <apexchart type="donut" :options="chartOptions" :series="series1" width="300"></apexchart>
+                <p1 style="text-align:center; margin-left:30px; font-size:30px">IS TEST efficient</p1>
+                <apexchart type="donut" :options="chartOptions" :series="series2" width="300"></apexchart>
+            </div>
+            <script>
+                new Vue({
+                    el: '#app',
+                    components: {
+                        apexchart: VueApexCharts,
+                    },
+                    data: {
+                        series1: [44, 55, 41,],
+                        labels: ['Run', 'Wait', 'Stop'],
+                        series2: [44, 35, 41,],
+                        chartOptions: {
+                            chart: {
+                                type: 'donut',
+                                //offsetX:0
+                            },
+                            responsive: [{
+                                breakpoint: 480,
+                                options: {
+                                    chart: {
+                                        width: 200,
+
+                                    },
+                                    legend: {
+                                        position: 'bottom'
+                                    },
+
+                                }
+                            }],
+                            colors: ['#59CE8F', '#FFFAFA', '#FF1E00'],
+                            dataLabels: {
+                                style: {
+                                    colors: ['#000000']
+                                }
+                            },
+                        },
+
+
+                    },
+
+                })
+            </script>
+        </div>
+
+        @*<div class="col-6">
+
+                <table class="table overflow-hidden">
+                    <tr>
+                        <td><br />MTBA <br />6.7</td>
+                        <td>Yesterday <br />Output <br />6.7</td>
+                    </tr>
+                    <tr>
+                        <td><br />MTBA <br />6.7</td>
+                        <td>Yesterday <br />Output <br />6.7</td>
+                    </tr>
+                </table>
+            </div>*@
+
+        <div class=" col-3">
+            <div class="card" style="margin-top:50px;">
+                <br /><div style="text-align: center; font-size: 25px;">MTBA</div><br />
+
+                <div style="text-align: center;  font-size: 25px; font-weight: bold; padding-top: 14px">6.1</div>
+            </div>
+            @*//1t*@
+            <div class="card" style="margin-top:50px;">
+                <br /><div style="text-align:center;font-size:25px;">MTBA</div><br />
+
+                <div style=" text-align: center; font-size: 25px; font-weight: bold; padding-top: 14px">6.8</div>
+            </div>
+        </div>
+        <div class=" col-3">
+            <div class="card" style="margin-top:50px">
+                <div style="text-align: center; font-size: 25px;">Output</div>
+                <div style="text-align: center; font-size: 25px;">Yesterday</div> <br />
+                <div style="text-align: center;  font-size: 25px; font-weight: bold ">108K</div>
+            </div>
+            <div class="card" style="margin-top:50px">
+                <div style="text-align: center; font-size: 25px;">Output</div>
+                <div style="text-align: center; font-size: 25px;">Yesterday</div> <br />
+                <div style="text-align: center;  font-size: 25px; font-weight: bold ">90K</div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+
+<div class="row" style="padding-top:50px;">
+    <div id="Stack">
+
+        <div class="border rounded-3  ">
+            <vue-apexcharts type="bar" height="350" :options="chartOptions" :series="series"></vue-apexcharts>
+        </div>
+
+
+        <script>
+            Vue.component('vue-apexcharts', VueApexCharts)
+            const Stack = new Vue({
+                el: '#Stack',
+                components: {
+                    apexchart: VueApexCharts,
+                },
+                data: {
+                    series: [
+                    ],
+                    chartOptions: {
+                        chart: {
+                            type: 'bar',
+                            height: 350,
+                            stacked: true,
+                            stackType: '100%',
+                            events: {
+                                dataPointSelection: function (e, chart, config) {
+                                    //console.log(config);
+                                    //console.log(config.w.config.series[config.seriesIndex].name);
+                                    //console.log(chart.w.globals.labels[config.dataPointIndex]);
+                                    x = config.w.config.series[config.seriesIndex].name;
+                                    lb = chart.w.globals.labels[config.dataPointIndex];
+                                    switch (config.dataPointIndex) {
+                                        case config.dataPointIndex = 0: {
+                                            switch (config.w.config.series[config.seriesIndex].name) {
+                                                case x = "Run":
+                                                    window.open("/home/IS");
+                                                    break;
+                                                case x = "Wait":
+                                                    window.open("/home/IS");
+                                                    break;
+                                                case x = "Stop":
+                                                    window.open("/home/IS");
+                                                    break;
+                                            }
+                                        }
+                                        case config.dataPointIndex = 1: {
+                                            switch (config.w.config.series[config.seriesIndex].name) {
+                                                case x = "Run":
+                                                    window.open("#");
+                                                    break;
+                                                case x = "Wait":
+                                                    window.open("#");
+                                                    break;
+                                                case x = "Stop":
+                                                    window.open("#");
+                                                    break;
+                                            }
+                                        }
+                                        case config.dataPointIndex = 2: {
+                                            switch (config.w.config.series[config.seriesIndex].name) {
+                                                case x = "Run":
+                                                    window.open("/home/HTPS");
+                                                    break;
+                                                case x = "Wait":
+                                                    window.open("/home/HTPS");
+                                                    break;
+                                                case x = "Stop":
+                                                    window.open("/home/HTPS");
+                                                    break;
+                                            }
+                                        }
+                                        case config.dataPointIndex = 3: {
+                                            switch (config.w.config.series[config.seriesIndex].name) {
+                                                case x = "Run":
+                                                    window.open("/home/MOLED");
+                                                    break;
+                                                case x = "Wait":
+                                                    window.open("/home/MOLED");
+                                                    break;
+                                                case x = "Stop":
+                                                    window.open("/home/MOLED");
+                                                    break;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+
+                        plotOptions: {
+                            bar: {
+                                horizontal: true,
+                            },
+                        },
+                        stroke: {
+                            width: 1,
+                            colors: ['#fff']
+                        },
+                        title: {
+                            text: '',
+                            align: 'center',
+                            style: {
+                                fontSize: '20px',
+                                fontWeight: 'bold',
+                                fontFamily: undefined,
+                                color: '#263238'
+                            },
+                        },
+                        xaxis: {
+                            type: 'categories',
+                            categories: []
+                        },
+                        yaxis: {
+                            title: {
+                                text: undefined
+                            },
+                        },
+                        tooltip: {
+                            y: {
+                                formatter: function (val) {
+                                    return val + "%"
+                                }
+                            }
+                        },
+                        fill: {
+                            opacity: 1
+                        },
+                        legend: {
+                            position: 'bottom',
+                            horizontalAlign: 'center',
+                            offsetX: 40
+                        },
+                        colors: ['#59CE8F', '#FFFAFA', '#FF1E00'],
+                        dataLabels: {
+                            style: {
+                                colors: ['#000000']
+                            }
+                        },
+
+                    },
+
+
+                },
+                created() {
+                    this.GetMCTotalStatus()
+                },
+                methods: {
+                    GetMCTotalStatus() {
+                        axios
+                            .get('/home/GetMCTotalStatus')
+                            .then(res => {
+                                res.data.forEach((a) => {
+                                    this.series.push({
+                                        name: a.Flag,
+                                        data: JSON.parse(a.Data)
+                                    })
+                                })
+                            }).catch(function (error) { console.log(error); })
+                    },
+                    //clickHandler(event, chartContext, config) {
+                    //    console.log(config.selectedDataPoints[0])
+                    //},
+
+
+
+
+                }
+
+            })
+        </script>
+
+    </div>
+
+
+</div>
+
+
+<div class="container mb-4" id="ISG">
+    <div class="row" hidden>
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Biz</th>
+                        <th>McNo</th>
+                        <th>Status</th>
+                        <th>RunType</th>
+                        <th>Yield</th>
+                    </tr>
+                </thead>
+                <tbody v-for="i in IS_data ">
+
+                    <tr>
+                        <td>{{i.Biz}}</td>
+                        <td>{{i.McNo}}</td>
+                        <td>{{i.Status}}</td>
+                        <td>{{i.RunType}}</td>
+                        <td>{{i.Yield}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-3 my-5  flex-wrap " v-for="i in IS_data">
+                <div v-if="i.Biz === 'IS'">
+
+
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" v-on:click="MacDetail(i.McNo),DFR(i.McNo)" >
+                        <div style="width:180px;height:246px;" @*v-bind:class="status(i.Status)"*@ v-bind:style="ss(i.Status)">
+                            <div>
+                                <div style="text-align:center ">{{i.Biz}}</div>
+                                <div style="text-align:center">{{i.McNo}}</div>
+                            </div>
+                            <div v-bind:style="insquare(i.Status)">
+                                <br />
+
+                                <div class="container-fluid" style="text-align: center; ">{{i.Status}}</div>
+                                <div class="container-fluid" style="text-align: center; ">{{i.RunType}}</div>
+                                <div class="container-fluid" style="text-align: center; ">{{i.Yield}}%</div>
+
+                                <br />
+
+                            </div>
+
+                            <div class="">
+                                <br />
+                                <br />
+                                <br />
+                            </div>
+                        </div>
+                    </button>
+
+                </div>
+
+
+
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+                        <div @*method="post" action="/Home/MacDetail"*@ class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">MC Operation monitor</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+
+                        <div class="modal-body" >
+                            <div class="container border border-dark">
+                                <div class="row" v-for="i in MacDetails">
+                                    <div class="col-3">LOT:{{i.Biz}}</div>
+                                    <div class="col-3">JOB:{{i.McNo}}</div>
+                                    <div class="col-3">Type:</div>
+                                    <div class="col-3">Total Count:</div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-5">
+                                <div class="col-4 ">
+                                    Defect Rate Summary(BIN)
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>BIN_Name</th>
+                                                <th>Defect_Rate</th>
+                                                
+                                            </tr>
+                                        </thead>
+
+                                        <tbody v-for="r in DFRS">
+
+                                            <tr>
+                                                <td>{{r.BIN_Name}}</td>
+                                                <td>{{r.Defect_Rate}}</td>
+                                                
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+                                <div class="col-4 ">
+                                    Defect Rate Summary(TEST)
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Biz</th>
+                                                <th>McNo</th>
+                                                <th>Status</th>
+                                                <th>RunType</th>
+                                                <th>Yield</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody v-for="i in MacDetails">
+
+                                            <tr>
+                                                <td>{{i.Biz}}</td>
+                                                <td>{{i.McNo}}</td>
+                                                <td>{{i.Status}}</td>
+                                                <td>{{i.RunType}}</td>
+                                                <td>{{i.Yield}}</td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                                <div class="col-4 ">
+                                    Alam history
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Biz</th>
+                                                <th>McNo</th>
+                                                <th>Status</th>
+                                                <th>RunType</th>
+                                                <th>Yield</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody v-for="i in MacDetails">
+
+                                            <tr>
+                                                <td>{{i.Biz}}</td>
+                                                <td>{{i.McNo}}</td>
+                                                <td>{{i.Status}}</td>
+                                                <td>{{i.RunType}}</td>
+                                                <td>{{i.Yield}}</td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                                <div class="col-4 ">
+                                    Site Defect Count summary (Test)
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Biz</th>
+                                                <th>McNo</th>
+                                                <th>Status</th>
+                                                <th>RunType</th>
+                                                <th>Yield</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody v-for="i in MacDetails">
+
+                                            <tr>
+                                                <td>{{i.Biz}}</td>
+                                                <td>{{i.McNo}}</td>
+                                                <td>{{i.Status}}</td>
+                                                <td>{{i.RunType}}</td>
+                                                <td>{{i.Yield}}</td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                                <div class="col-4 ">
+                                    Socket Defect Count summary (Test)
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Biz</th>
+                                                <th>McNo</th>
+                                                <th>Status</th>
+                                                <th>RunType</th>
+                                                <th>Yield</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody v-for="i in MacDetails">
+
+                                            <tr>
+                                                <td>{{i.Biz}}</td>
+                                                <td>{{i.McNo}}</td>
+                                                <td>{{i.Status}}</td>
+                                                <td>{{i.RunType}}</td>
+                                                <td>{{i.Yield}}</td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                                <div class="col-4  ">
+                                    Site Yield
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Biz</th>
+                                                <th>McNo</th>
+                                                <th>Status</th>
+                                                <th>RunType</th>
+                                                <th>Yield</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody v-for="i in MacDetails">
+
+                                            <tr>
+                                                <td>{{i.Biz}}</td>
+                                                <td>{{i.McNo}}</td>
+                                                <td>{{i.Status}}</td>
+                                                <td>{{i.RunType}}</td>
+                                                <td>{{i.Yield}}</td>
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                    <div class="col-4  ">
+                                        Site Yield & OPEN Defect Rate
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Biz</th>
+                                                    <th>McNo</th>
+                                                    <th>Status</th>
+                                                    <th>RunType</th>
+                                                    <th>Yield</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody v-for="i in MacDetails">
+
+                                                <tr>
+                                                    <td>{{i.Biz}}</td>
+                                                    <td>{{i.McNo}}</td>
+                                                    <td>{{i.Status}}</td>
+                                                    <td>{{i.RunType}}</td>
+                                                    <td>{{i.Yield}}</td>
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+           
+
+
+    </div>
+</div>
+
+
+
+
+
+<script>
+
+
+    new Vue({
+        el: '#ISG',
+        //components: {
+        //    apexchart: VueApexcharts,
+        //},
+        data() {
+            return {
+                IS_data: [],
+                MacDetails: [],
+                DFR_data: [],
+                DFRS: [],
+                //bg_color: '',
+                //stylerun: {
+                //    g: '#4cff00',
+                //    font: 'Poppins,sans-serif',
+                //},
+                //stylewait: {
+                //    y: '#FFB800',
+                //    font: 'Poppins,sans-serif',
+                //},
+                //stylestop: {
+                //    r: '#FF0000',
+                //    font: 'Poppins,sans-serif',
+                //},
+                colorrun: {
+                    angle: '180',
+                    color1: '#59CE8F',
+                    color2: '#59CE8F',
+                    color3: '#FFFFFF',
+
+                },
+                colorwait: {
+                    angle: '180',
+
+                    color1: '#FFFAFA',
+                    color2: '#FFFAFA',
+                    color3: '#FFFFFF',
+                },
+                colorstop: {
+                    angle: '180',
+                    color1: '#ba181b',
+                    color2: '#FF1E00',
+                    color3: '#FFFFFF',
+                },
+
+            }
+
+        },
+        computed: {
+            lgr() {
+                return `linear-gradient(${this.colorrun.angle}deg, ${this.colorrun.color1}, ${this.colorrun.color2}, ${this.colorrun.color3})`;
+            },
+            lgw() {
+                return `linear-gradient(${this.colorwait.angle}deg, ${this.colorwait.color1}, ${this.colorwait.color2}, ${this.colorwait.color3})`;
+            },
+            lgs() {
+                return `linear-gradient(${this.colorstop.angle}deg, ${this.colorstop.color1}, ${this.colorstop.color2}, ${this.colorstop.color3})`;
+            }
+        },
+
+        created() {
+            this.get_is();
+            this.get_dfr();
+            /*this.MacDetail();*/
+
+        },
+        methods: {
+            get_is() {
+                axios
+                    .get('/home/GetIS')
+                    .then(res => {
+                        this.IS_data = res.data;
+                    }).catch(function (error) { console.log(error); })
+            },
+
+            MacDetail(McNo) {
+                axios
+                    .post('/home/Macdetail', { param1: McNo })
+                
+                    .then(res => {
+                        //console.log(res.data)
+                        this.MacDetails = res.data;
+
+                    }).catch(function (error) { console.log(error); })
+
+
+                /*console.log(McNo)*/
+                return McNo;
+
+            },
+
+            get_dfr() {
+                axios
+                    .get('/home/GetDFR')
+                    .then(res => {
+                        this.DFR_data = res.data;
+                    }).catch(function (error) { console.log(error); })
+            },
+
+            DFR(McNo) {
+                axios
+                    .post('/home/DFR', { param1: McNo })
+
+                    .then(res => {
+                        console.log(res.data)
+                        this.DFRS = res.data;
+
+                    }).catch(function (error) { console.log(error); })
+
+
+                /*console.log(McNo)*/
+                return McNo;
+
+            },
+
+
+
+
+
+            // class
+            //status(Status) {
+            //    let colors
+            //    if (Status == 'RUN') {
+            //        colors = 'bg-success'
+
+            //    }
+            //    if (Status == 'WAIT') {
+            //        colors = 'bg-warning'
+            //    }
+            //    if (Status == 'Stop') {
+            //        colors = 'bg-danger'
+            //    }
+            //    return colors
+
+            //},
+
+            //style
+            ss(Status) {
+                if (Status == 'RUN') {
+                    return {
+                        backgroundImage: this.lgr,
+                        fontFamily: 'Poppins,sans-serif',
+                        fontWeight: '700',
+                        //backgroundColor: '#80FF56',
+                        border: 'thick solid #000000',
+
+
+                    }
+
+                }
+                if (Status == 'WAIT') {
+                    return {
+                        backgroundImage: this.lgw,
+                        fontFamily: 'Poppins,sans-serif',
+                        fontWeight: '700',
+                        //backgroundColor: '#ffea00',
+                        border: 'thick solid #000000',
+                    }
+                }
+                if (Status == 'STOP') {
+                    return {
+                        backgroundImage: this.lgs,
+                        fontFamily: 'Poppins,sans-serif',
+                        fontWeight: '700',
+                        //backgroundColor: '#e5383b',
+                        border: 'thick solid #000000',
+                    }
+                }
+            },
+            insquare(Status) {
+                if (Status == 'RUN') {
+                    return {
+                        //backgroundImage: this.lgr,
+                        //background: '#8dff85',
+                        borderTop: 'solid #000000',
+                        borderBottom: 'solid #000000',
+                    }
+
+                }
+                if (Status == 'WAIT') {
+                    return {
+                        //backgroundImage: this.lgw,
+                        //background: '#f9ff85',
+                        borderTop: 'solid #000000',
+                        borderBottom: 'solid #000000',
+                    }
+                }
+                if (Status == 'STOP') {
+                    return {
+                        // backgroundImage: this.lgs,
+                        //background: '#ff8585',
+                        borderTop: 'solid #000000',
+                        borderBottom: 'solid #000000',
+                    }
+                }
+            },
+
+
+        },
+    })
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
